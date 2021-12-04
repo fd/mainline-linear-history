@@ -1,0 +1,16 @@
+name: 'mainline-linear-history'
+description: 'Make sure the reference commit is part of a linear history'
+author: 'Simon Menke'
+inputs:
+  github_token:
+    required: true
+    description: "The GITHUB_TOKEN"
+  commit_sha:
+    required: true
+    description: "Test commit sha to test"
+outputs:
+  mainline_producer:
+    description: The pull request number that produced the mainline commit
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
