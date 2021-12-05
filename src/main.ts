@@ -29,11 +29,11 @@ async function run(): Promise<void> {
       core.warning(`${pr.number}: ${pr.state} ${pr.merge_commit_sha} ?= ${commit_sha}`);
     }
 
-    const candidates = prs.data.filter(pr => pr.state === "closed").filter(pr => pr.merge_commit_sha == commit_sha).filter(pr => !!pr.merged_at);
+    const candidates = prs.data.filter(pr => pr.state === "closed").filter(pr => pr.merge_commit_sha === commit_sha).filter(pr => !!pr.merged_at);
     if (candidates.length == 0) {
       throw new Error(`no associated pull requests were found for ${commit_sha}`);
     }
-    if (candidates.length > 0) {
+    if (candidates.length > 1) {
       throw new Error(`multiple candidate pull requests were found for ${commit_sha}`);
     }
 
