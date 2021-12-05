@@ -79,10 +79,10 @@ function run() {
             if (commit_base_sha !== pr_base_sha) {
                 throw new Error(`the parent for ${commit_sha} doesn't match the base of pull request #${pr.number}, the _mainline framework_ only works with _squash merge_ mainlines`);
             }
-            core.info(`PR ${pr.url} seems acceptable as a base for ${commit_sha}`);
+            core.info(`PR ${pr.html_url} seems acceptable as a base for ${commit_sha}`);
             core.info(`Stealing build artifacts and test results is possible, given additional checks.`);
             core.setOutput('mainline_producer', `${pr.number}`);
-            core.exportVariable('MAINLINE_BASE_PR_URL', pr.url);
+            core.exportVariable('MAINLINE_BASE_PR_URL', pr.html_url);
             core.exportVariable('MAINLINE_BASE_PR_NUMBER', `${pr.number}`);
         }
         catch (error) {
